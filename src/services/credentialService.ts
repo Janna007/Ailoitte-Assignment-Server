@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import bcrypt from 'bcrypt';
-import {User} from '../models';
+import { User } from '../models';
 
 export class CredentialService {
     constructor() {}

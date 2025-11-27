@@ -14,13 +14,12 @@ export interface CategoryBody {
 export interface ProductBody {
     name: string;
     description?: string | undefined;
-    price:number
-    stock:number
-    categoryId:number
-
+    price: number;
+    stock: number;
+    categoryId: number;
 }
 
-export interface ProductImage{
+export interface ProductImage {
     product: Express.Multer.File[];
 }
 
@@ -62,14 +61,14 @@ export type AuthCookie = {
     refresh_token: string;
 };
 
-export type ProductInput={
+export type ProductInput = {
     name: string;
     description?: string | undefined;
-    price:number
-    stock:number
-    categoryId:number
-    imageUrl:string
-}
+    price: number;
+    stock: number;
+    categoryId: number;
+    imageUrl: string;
+};
 export interface AuthUser extends Request {
     auth: {
         sub: string;

@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import { CategoryInput } from '../types';
-import {Category} from '../models';
+import { Category } from '../models';
 
 export class CategoryService {
     async create({ name, description }: CategoryInput) {
