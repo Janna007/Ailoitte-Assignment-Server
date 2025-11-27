@@ -5,6 +5,7 @@ import { sequelize } from './config/db';
 import User from './models/User';
 import bcrypt from 'bcrypt';
 import { roles } from './constants';
+import './models'
 
 const PORT = Config.PORT;
 

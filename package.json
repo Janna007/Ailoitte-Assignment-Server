@@ -11,7 +11,6 @@
     "lint:fix": "eslint . --fix",
     "test": "jest --no-cache --coverage --all --runInBand",
     "test:watch": "jest --watch --runInBand",
-    "prepare": "husky",
     "build": "tsc"
   },
   "author": "janna",

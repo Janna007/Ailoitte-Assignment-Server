@@ -11,6 +11,19 @@ export interface CategoryBody {
     description?: string | undefined;
 }
 
+export interface ProductBody {
+    name: string;
+    description?: string | undefined;
+    price:number
+    stock:number
+    categoryId:number
+
+}
+
+export interface ProductImage{
+    product: Express.Multer.File[];
+}
+
 export interface userLoginData {
     email: string;
     password: string;
@@ -25,6 +38,10 @@ export interface RequestLoginUser extends Request {
 
 export interface CreateCategoryInput extends Request {
     body: CategoryBody;
+}
+
+export interface ProductCreateInput extends Request {
+    body: ProductBody;
 }
 
 export type registerUserData = {
@@ -45,6 +62,14 @@ export type AuthCookie = {
     refresh_token: string;
 };
 
+export type ProductInput={
+    name: string;
+    description?: string | undefined;
+    price:number
+    stock:number
+    categoryId:number
+    imageUrl:string
+}
 export interface AuthUser extends Request {
     auth: {
         sub: string;

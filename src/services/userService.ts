@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import { registerUserData } from '../types';
-import User from '../models/User';
+import {User} from '../models';
 import bcrypt from 'bcrypt';
 
 export class UserService {
