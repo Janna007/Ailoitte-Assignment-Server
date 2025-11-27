@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { Logger } from 'winston';
 import { AuthUser, RequestCartInput } from '../types';
 import { CartService } from '../services/cartService';
+import { validationResult } from 'express-validator';
 
 export class CartController {
     constructor(
@@ -10,6 +11,12 @@ export class CartController {
     ) {}
     async addToCart(req: RequestCartInput, res: Response, next: NextFunction) {
         // const productId=req.params.id
+
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
 
         const _req = req as AuthUser;
         const userId = Number(_req.auth.sub);

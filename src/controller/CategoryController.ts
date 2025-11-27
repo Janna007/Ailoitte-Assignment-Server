@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { Logger } from 'winston';
 import { CategoryService } from '../services/categoryService';
 import { CreateCategoryInput } from '../types';
+import { validationResult } from 'express-validator';
 
 export class CategoryController {
     constructor(
@@ -10,6 +11,12 @@ export class CategoryController {
     ) {}
     async createCategory(req: CreateCategoryInput, res: Response, next: NextFunction) {
         //validation
+
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
 
         const { name, description } = req.body;
 
@@ -32,6 +39,12 @@ export class CategoryController {
     }
 
     async updateCategory(req: CreateCategoryInput, res: Response, next: NextFunction) {
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
+
         const categoryId = req.params.id;
 
         const { name, description } = req.body;

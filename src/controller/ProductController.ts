@@ -5,6 +5,7 @@ import { uploadOnCloudinary } from '../utils/cloudinary';
 import { ProductCreateInput } from '../types';
 import { ProductService } from '../services/productService';
 import { Op, WhereOptions } from 'sequelize';
+import { validationResult } from 'express-validator';
 
 export class ProductController {
     constructor(
@@ -14,6 +15,12 @@ export class ProductController {
 
     async createProduct(req: ProductCreateInput, res: Response, next: NextFunction) {
         //add validation
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
+
         const { name, description, price, stock, categoryId } = req.body;
 
         try {
@@ -60,6 +67,12 @@ export class ProductController {
     }
 
     async getProducts(req: Request, res: Response, next: NextFunction) {
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
+
         const { minPrice, maxPrice, categoryId, search, page = 1, limit = 10 } = req.query;
 
         const pageNumber = Number(page);
@@ -112,6 +125,12 @@ export class ProductController {
     }
 
     async updateProduct(req: ProductCreateInput, res: Response, next: NextFunction) {
+        const result = validationResult(req);
+        // console.log("validation result",result)
+        if (!result.isEmpty()) {
+            return res.status(400).json({ errors: result.array() });
+        }
+
         const productId = req.params.id;
         console.log(req.body);
         console.log(req.body.name);
