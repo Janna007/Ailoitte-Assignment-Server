@@ -29,7 +29,6 @@ export class AuthController {
             password: '****',
         });
         try {
-             
             const userCreated: registerUserData = await this.userService.createUser({
                 username,
                 email,
