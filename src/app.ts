@@ -8,6 +8,7 @@ import authRouter from '../src/routes/auth';
 import categoryRouter from '../src/routes/category';
 import productRouter from '../src/routes/product';
 import cartRouter from '../src/routes/cart';
+import orderRouter from '../src/routes/order';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/auth', authRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
 app.use('/cart', cartRouter);
+app.use('/order', orderRouter);
 
 //error handler
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
