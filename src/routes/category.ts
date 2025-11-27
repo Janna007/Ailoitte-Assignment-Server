@@ -18,4 +18,12 @@ router.post(
         categoryController.createCategory(req, res, next)
 );
 
+router.patch(
+    '/:id',
+    authenticate,
+    canAccess(['admin']),
+    (req: Request, res: Response, next: NextFunction) =>
+        categoryController.updateCategory(req, res, next)
+);
+
 export default router;

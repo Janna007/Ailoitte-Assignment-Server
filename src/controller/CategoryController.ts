@@ -30,4 +30,22 @@ export class CategoryController {
             return;
         }
     }
+
+    async updateCategory(req: CreateCategoryInput, res: Response, next: NextFunction) {
+        const categoryId = req.params.id;
+
+        const { name, description } = req.body;
+
+        try {
+            await this.categoryService.update({ name, description }, Number(categoryId));
+            this.logger.info('category updated successfully', {
+                id: categoryId,
+            });
+
+            res.status(201).json({ id: categoryId });
+        } catch (error) {
+            next(error);
+            return;
+        }
+    }
 }
