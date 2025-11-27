@@ -13,6 +13,15 @@ export interface userData {
     email: string;
     password: string;
 }
+
+export interface userLoginData {
+    email: string;
+    password: string;
+}
 export interface RequestRegisterUser extends Request {
     body: userData;
+}
+
+export interface RequestLoginUser extends Request {
+    body: userLoginData;
 }
