@@ -8,11 +8,11 @@ import { swaggerSpec } from './config/swagger';
 import helmet from 'helmet';
 
 import { Config } from './config';
-import authRouter from '../src/routes/auth';
-import categoryRouter from '../src/routes/category';
-import productRouter from '../src/routes/product';
-import cartRouter from '../src/routes/cart';
-import orderRouter from '../src/routes/order';
+import authRouter from './routes/auth';
+import categoryRouter from './routes/category';
+import productRouter from './routes/product';
+import cartRouter from './routes/cart';
+import orderRouter from './routes/order';
 
 const app = express();
 
