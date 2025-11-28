@@ -58,15 +58,15 @@ export class AuthController {
 
             res.cookie('access_token', accessToken, {
                 httpOnly: true,
-                domain: 'localhost',
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 60, //1 hour
+                secure: true, // required for HTTPS
+                sameSite: 'none', // required for cross-site cookies
+                maxAge: 1000 * 60 * 60,
             });
 
             res.cookie('refresh_token', refreshToken, {
                 httpOnly: true,
-                domain: 'localhost',
-                sameSite: 'strict',
+                secure: true, // required for HTTPS
+                sameSite: 'none', // required for cross-site cookies
                 maxAge: 1000 * 60 * 60 * 24 * 365, //1 year
             });
 
@@ -140,15 +140,15 @@ export class AuthController {
 
             res.cookie('access_token', accessToken, {
                 httpOnly: true,
-                domain: 'localhost',
-                sameSite: 'strict',
-                maxAge: 1000 * 60 * 60, //1 hour
+                secure: true, // required for HTTPS
+                sameSite: 'none', // required for cross-site cookies
+                maxAge: 1000 * 60 * 60,
             });
 
             res.cookie('refresh_token', refreshToken, {
                 httpOnly: true,
-                domain: 'localhost',
-                sameSite: 'strict',
+                secure: true, // required for HTTPS
+                sameSite: 'none', // required for cross-site cookies
                 maxAge: 1000 * 60 * 60 * 24 * 365, //1 year
             });
 
