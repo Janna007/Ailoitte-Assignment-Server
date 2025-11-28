@@ -78,6 +78,11 @@ const productController = new ProductController(logger, productService);
  *
  *     UpdateProductRequest:
  *       type: object
+ *       required:
+ *         - name
+ *         - price
+ *         - stock
+ *         - categoryId
  *       properties:
  *         name:
  *           type: string
