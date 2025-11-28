@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
+import helmet from 'helmet';
 
 import { Config } from './config';
 import authRouter from '../src/routes/auth';
@@ -21,6 +22,7 @@ app.use(
         credentials: true,
     })
 );
+app.use(helmet());
 
 app.use(express.static('public', { dotfiles: 'allow' }));
 app.use(cookieParser());

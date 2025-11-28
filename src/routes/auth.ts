@@ -53,6 +53,9 @@ const authController = new AuthController(logger, userService, tokenService, cre
  *          message:
  *           type: string
  *           example: Registered successfully
+ *          token:
+ *           type: string
+ *           example: jasdfasdfasnvvlsergnxcvsdfas
  *
  *     LoginRequest:
  *       type: object
@@ -77,6 +80,9 @@ const authController = new AuthController(logger, userService, tokenService, cre
  *         message:
  *           type: string
  *           example: Logged in successfully
+ *         token:
+ *           type: string
+ *           example: sakjrgtsekruhckabse4wkajwdfkajsd
  */
 
 /**
