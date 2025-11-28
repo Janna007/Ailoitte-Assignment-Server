@@ -10,8 +10,16 @@ export const sequelize = new Sequelize(database, username, password, {
     host: host,
     dialect: 'postgres',
     logging: false,
-    // ssl:{
-    //     rej
-    // },
-    // pool:''
+    dialectOptions: {
+        ssl: {
+            require: true, // Supabase requires SSL
+            rejectUnauthorized: false,
+        },
+    },
+    pool: {
+        max: 10,
+        min: 0,
+        idle: 10000,
+        acquire: 30000,
+    },
 });

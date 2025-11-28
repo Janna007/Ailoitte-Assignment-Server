@@ -14,7 +14,7 @@
     "test:watch": "jest --watch --runInBand",
     "build": "tsc",
     "prepare": "husky",
-    "vercel-build": "npm run build"
+    "postinstall": "npm run build"
   },
   "author": "janna",
   "license": "ISC",
