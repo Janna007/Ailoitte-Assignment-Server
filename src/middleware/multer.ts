@@ -1,17 +1,26 @@
 import { Request } from 'express';
-import multer from 'multer';
+import multer, { FileFilterCallback } from 'multer';
 
+// Storage configuration
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: (
+        req: Request,
+        file: Express.Multer.File,
+        cb: (error: Error | null, destination: string) => void
+    ) => {
         cb(null, './public/temp');
     },
-    filename: function (req, file, cb) {
-        //   const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.originalname);
+    filename: (
+        req: Request,
+        file: Express.Multer.File,
+        cb: (error: Error | null, filename: string) => void
+    ) => {
+        cb(null, file.originalname); // You can also add a timestamp for uniqueness
     },
 });
 
-const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
+// File filter
+const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp'];
 
     if (allowed.includes(file.mimetype)) {
@@ -21,8 +30,9 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilt
     }
 };
 
+// Export Multer upload instance
 export const upload = multer({
-    storage: storage,
+    storage,
     fileFilter,
     limits: {
         fileSize: 5 * 1024 * 1024, // 5 MB

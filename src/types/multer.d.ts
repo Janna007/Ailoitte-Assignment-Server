@@ -1,11 +1,9 @@
-import { Multer } from 'multer';
-
 declare global {
     namespace Express {
         interface Request {
-            file?: Multer.File;
+            file?: Express.Multer.File;
             files?: {
-                [fieldname: string]: Multer.File[];
+                [fieldname: string]: Express.Multer.File[];
             };
         }
     }
